@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+    <h3 style="padding-top: 0.5rem; font-size: 1.5rem; margin-left: -2rem; margin-top: 1rem;">Choose your favourite stay!</h3>
+    <!-- <form method="GET" action="/listings/new">
+    <button>Create New List</button>
+</form> -->
+<link rel="stylesheet" href="/css/index.css">
+<div class="boss-cards">
+<% for(let listing of allListings) { %>
+    <a href="/listings/<%=listing._id%>"> 
+<div class="card">
+
+    <img src="<%=listing.image.url%>" alt="Beautiful House"/>
+    
+    <div class="card-content">
+        <p class="card-title"><%= listing.title %></p>
+        
+        <button class="card-price">&#8377;<%=listing.price%>/- per night</button>       
+    </div>
+</div>
+</a>
+<% } %>
+</div>
+
+
+
+  

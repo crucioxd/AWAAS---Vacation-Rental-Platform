@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/edit.css">
+<h3 class="mt-4">Modify Your Listing</h3>
+
+<form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+    <div class="mb-3 col-md-2">
+        <label for="title" class="form-label">Title</label>
+        <input name="listing[title]" value="<%= listing.title %>" type="text" required class="form-control">
+        <div class="valid-feedback">Title looks good!</div>
+    </div>
+
+    <div class="mb-3 col-8">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" required class="form-control"><%= listing.description %></textarea>
+        <div class="invalid-feedback">Please enter a short description</div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input name="listing[image][url]" value="<%= listing.image.url %>" placeholder="Enter image URL/Link" required class="form-control">
+    </div>
+ <div class="row">
+    <div class="mb-3 col-md-4" >
+        <label for="price" class="form-label">Price</label>
+        <input name="listing[price]" value="<%= listing.price %>" type="number" required class="form-control">
+        <div class="invalid-feedback">Please enter a valid price</div>
+
+    </div>
+
+    <div class="mb-3 col-md-4">
+        <label for="country" class="form-label">Country</label>
+        <input name="listing[country]" value="<%= listing.country %>" type="text" required class="form-control">
+        <div class="invalid-feedback">Country name should be valid</div>
+
+    </div>
+
+ </div>
+   
+    <div class="mb-3 col-md-2">
+        <label for="location" class="form-label">Location</label>
+        <input name="listing[location]" value="<%= listing.location %>" type="text" required class="form-control">
+        <div class="invalid-feedback">Location should be valid </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark mb-3 mt-3 edit-btn">Edit</button>
+</form>
+
+<script src="/javascript/script.js"></script>

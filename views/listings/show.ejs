@@ -1,0 +1,147 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/show.css">
+<link rel="stylesheet" href="/css/review.css">
+<script>
+ 
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('rating');
+    const ratingDisplay = document.getElementById('rating-display');
+
+    // Ensure both elements are found
+    if (slider && ratingDisplay) {
+        // Set initial value
+        ratingDisplay.textContent = slider.value;
+
+        // Dynamically update the rating display on slider input
+        slider.addEventListener('input', () => {
+            const value = slider.value;
+            ratingDisplay.textContent = value;
+
+            // Optional: Update background color based on the value
+            const ratingColors = {
+                1: '#d32f2f', // Red
+                2: '#f57c00', // Orange
+                3: '#fbc02d', // Yellow
+                4: '#388e3c', // Green
+                5: '#1976d2', // Blue
+            };
+
+            // Change the badge background and apply a transform effect
+            ratingDisplay.style.backgroundColor = ratingColors[value];
+            ratingDisplay.style.transform = `scale(${1 + value / 20})`;
+        });
+    } else {
+        console.error('Slider or rating display element not found.');
+    }
+});
+
+</script>
+
+<div class="card">
+    <img src="<%= listing.image.url%>" class="card-top-img" alt="listing_image" />
+    <div class="card-body">
+        <h3 class="listing-title"><%= listing.title %></h3>
+        <p>Owned by: <i><b><%= listing.owner.username %></b></i></p> 
+        <p class="listing-description"><%= listing.description %></p>
+        <p class="listing-price">
+            <% if (listing.price !== undefined && listing.price !== null) { %>
+                &#8377;<%= listing.price.toLocaleString("en-IN") %>/- per night
+            <% } else { %>
+                Price not available
+            <% } %>
+        </p>
+        <p class="listing-location"><strong>Location:</strong> <%= listing.location %></p>
+        <p class="listing-country"><strong>Country:</strong> <%= listing.country %></p>
+        <% if (currUser && String(currUser._id) === String(listing.owner._id)) { %>
+            <div class="card-actions">
+                <a href="/listings/<%= listing._id %>/edit" class="btn edit-btn">Edit this listing</a>
+                <form method="POST" action="/listings/<%= listing._id %>?_method=Delete" class="delete-form">
+                    <button type="submit" class="btn delete-btn">Delete this listing</button>
+                </form>
+            </div>
+        <% } %>
+    </div>
+</div> 
+
+<hr>
+
+<div class="col-8 offset-2 review-form" style="margin-left: 1.09rem; margin-right: auto;">
+    <% if(currUser){ %>
+        <h4 style="font-weight: 600;">Leave a Review</h4>
+
+        <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
+            <div class="mt-3 mb-3">
+               
+                <div class="rating-slider-container" style="margin-left: -0.2rem; margin-top: -0.4rem;">
+                    <div class="rating-header">
+                        
+                        <span id="rating-display" class="rating-display">3</span>
+                    </div>
+                    <input 
+                        type="range" 
+                        min="1" 
+                        max="5" 
+                        value="3" 
+                        id="rating" 
+                        name="review[rating]" 
+                        class="form-range aesthetic-slider" 
+                        required
+                    >
+                </div>
+                
+                <div class="invalid-feedback">
+                    Please provide a rating for the review.
+                </div>
+            </div>
+
+            <div class="mt-3 mb-3">
+               
+                <textarea name="review[comment]" type="text" rows="4"   placeholder="Leave your Review here!" id="comment" class="form-control" required></textarea>
+                <div class="invalid-feedback">
+                    Please add some comments for review
+                </div>  
+            </div>
+            <button class="btn btn-sm btn-dark mt-3 mb-3">Submit</button>
+        </form>
+    <% } %> 
+</div>  
+
+<h4 style="margin-left: 1.3rem;">All reviews</h4>
+<% if (listing.reviews && listing.reviews.length > 0) { %> 
+    <div class="slider-container">
+      
+
+        <!-- Card Slider -->
+        <div class="boss-cards2">
+            <% for (review of listing.reviews) { %>
+                <div class="card2">
+                    <div class="card2-body">
+                        <h5 class="card2-title">@<%= review.author?.username || "Anonymous" %></h5>
+                        <p class="card2-text"><%= review.comment || "No comment provided." %></p>
+
+                        <!-- Rating as Stars -->
+                        <div class="stars">
+                            <% for (let i = 1; i <= 5; i++) { %>
+                                <% if (i <= review.rating) { %>
+                                    <span class="star filled" title="<%= review.rating %>">&#9733;</span> <!-- Filled Star -->
+                                <% } else { %>
+                                    <span class="star" title="<%= review.rating %>">&#9734;</span> <!-- Empty Star -->
+                                <% } %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- Delete Review -->
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" class="mb-3 mt-3">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+
+     
+    </div>
+<% } else { %>
+    <!-- Optionally display a message if no reviews are available -->
+    <p style="margin-left: 1.3rem;">No reviews yet for this listing.</p>
+<% } %>

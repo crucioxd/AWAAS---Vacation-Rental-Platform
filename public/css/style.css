@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f5f5f0; /* Light beige background */
+    margin: 0;
+    height: 100%; /* Ensure full height of the page */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Makes the main content area flexible and fills available space */
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between; /* Space between the two nav sections */
+    align-items: center;
+    background-color: #8B4513; /* Brown shade */
+    padding: 15px 20px; /* Add padding for spacing */
+    border-bottom: 1px solid #ddd; /* Optional border */
+}
+
+.navbar {
+    display: flex;
+}
+
+.nav-list {
+    list-style-type: none; /* Remove bullets */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Display items in a row */
+}
+
+.nav-list li {
+    margin-right: 20px; /* Space between items */
+    position: relative; /* For dropdown positioning */
+}
+
+.nav-list li a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 0.9rem;
+    font-weight: 600; /* Make text bold */
+    transition: transform 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    border-radius: 10px;    
+    padding: 0.5rem; /* Add padding for better clickable area */
+}
+
+.nav-list a:hover {
+    text-decoration: none;
+    color: white; /* Brown shade on hover */
+    border-radius: 10px; /* Rounded effect */
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly increased opacity */
+}
+
+/* Dropdown styles */
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the parent */
+    left: 0;
+    background-color: #8B4513; /* Same background as navbar */
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly increased opacity */
+    color: white; /* Brown shade on hover */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Footer styling */
+footer {
+    background-color: #edd5be;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #4a290b;
+    font-size: small;
+}
+
+.heading {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.f-info-social i {
+    font-size: 1rem;
+    width: 1.5rem;
+    text-decoration: none;
+}

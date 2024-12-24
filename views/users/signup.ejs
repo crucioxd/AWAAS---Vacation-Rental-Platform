@@ -1,0 +1,32 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3" style="margin-bottom: 20rem;">
+    <h1 class="col-4 offset-4" style="margin-top: 1rem;">Sign Up on Awaas</h1>
+    <div class="col-4 offset-4">
+
+<form action="/signup" method="POST" class="needs-validation" novalidate>
+    <div class="mb-3 mt-3">
+
+        <label for="username" class="form-label" >Username</label>
+    <input name="username" placeholder="Enter username" id="username" type="text" class="form-control"  required>
+    <div class="valid-feedback">username looks good!</div>
+    </div>
+    <div class="mb-3">
+
+        <label for="email" class="form-label" >Email</label>
+    <input name="email" placeholder="Enter your email" id="email" type="text" class="form-control"  required>
+    <div class="valid-feedback">email looks good!</div>
+    </div>
+    <div class="mb-3">
+
+        <label for="Password" class="form-label" >Password</label>
+        <input name="password" placeholder="Enter your Password" id="Password" type="password" class="form-control" required>
+
+    <div class="valid-feedback">Password looks good!</div>
+    </div>
+   
+    <button class="btn btn-dark">SignUp</button>
+
+</form>
+
+        </div>
+        </div>

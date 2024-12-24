@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    margin-left: 400px;
+    max-width: 500px; /* Adjust as needed */
+}
+
+.card-top-img {
+  width: 100%;
+  height: 380px;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.listing-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.listing-description {
+    margin: 8px 0;
+    color: #555;
+}
+
+.listing-price {
+    font-weight: bold;
+    color: #066d12;
+}
+
+.listing-location,
+.listing-country {
+    margin: 4px 0;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #3f97f5;
+    color: white;
+    
+}
+
+.delete-btn {
+    background-color: #de7213;
+    color: white;
+}
+
+/* Container for the Slider */
+.rating-slider-container {
+    max-width: 400px;
+    margin: 30px auto;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+/* Header Section with Label and Display */
+.rating-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    position: relative;
+    
+}
+
+/* Align the label and display neatly */
+.rating-label {
+    font-size: 1rem;
+    color: #b45309; /* Deep orange-brown */
+    font-weight: bold;
+    text-align: left;
+    margin-right: auto;
+}
+
+.rating-display {
+    font-size: 1    rem;
+    font-weight: bold;
+    background: #ff9800; /* Solid orange */
+    color: black;
+    padding: 4px 12px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-left: auto;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Slider Section */
+.aesthetic-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #676767; /* Light orange for slider track */
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(91, 91, 91, 0.2);
+    transition: background 0.3s ease-in-out;
+    margin: 10px 0; 
+   /* Ensure proper spacing from the header */
+}
+
+/* Slider Thumb */
+.aesthetic-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #7d7d7d; /* Darker orange thumb */
+    border: 2px solid #4a4747; /* Match label's color */
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+/* Hover Effect on Thumb */
+.aesthetic-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #fb8c00; /* Slightly brighter orange */
+}
+
+/* Active Effect on Thumb */
+.aesthetic-slider::-webkit-slider-thumb:active {
+    transform: scale(1.3);
+    background: #e65100; /* Very deep orange */
+    box-shadow: 0 6px 15px rgba(230, 81, 0, 0.4);
+}
+
+/* Fix the alignment issue of arrows or labels */
+.rating-slider-container input[type="range"] {
+    display: block;
+    margin: 0 auto;
+}
